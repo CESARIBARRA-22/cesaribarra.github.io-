@@ -65,6 +65,7 @@
         font-weight: bold;
         transition: 0.3s;
         box-shadow: 0 0 15px #00ffff;
+        cursor: pointer;
     }
 
     .boton:hover {
@@ -92,12 +93,26 @@
 
     <p>Página personal de contacto</p>
 
-    <a class="boton" href="https://mail.google.com/mail/?view=cm&fs=1&to=cesaribarragonzalez508@gmail.com&su=Contacto&body=Hola Cesar, quiero comunicarme contigo por..." target="_blank">
+    <!-- BOTÓN CORREGIDO -->
+    <a class="boton" onclick="abrirCorreo()">
         Contactarme a mi correo personal
         <span class="subtexto">Pulsa aquí</span>
     </a>
 
 </div>
+
+<!-- SCRIPT INTELIGENTE -->
+<script>
+function abrirCorreo() {
+    var esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (esMovil) {
+        window.location.href = "mailto:cesaribarragonzalez508@gmail.com?subject=Contacto&body=Hola Cesar, quiero comunicarme contigo por...";
+    } else {
+        window.open("https://mail.google.com/mail/?view=cm&fs=1&to=cesaribarragonzalez508@gmail.com&su=Contacto&body=Hola Cesar, quiero comunicarme contigo por...", "_blank");
+    }
+}
+</script>
 
 </body>
 </html>
